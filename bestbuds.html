@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Best Buds</title>
+
+<style>
+
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+  background:
+    linear-gradient(rgba(0,0,0,0.90), rgba(0,0,0,0.95)),
+    url('https://images.unsplash.com/photo-1519750157634-b6d493a0f77c?q=80&w=1920&auto=format&fit=crop');
+
+  background-size:cover;
+  background-position:center;
+  min-height:100vh;
+  color:white;
+  padding:40px;
+}
+
+.container{
+  max-width:1400px;
+  margin:auto;
+}
+
+.topo{
+  text-align:center;
+  margin-bottom:40px;
+}
+
+.logo{
+  width:180px;
+  margin-bottom:20px;
+  filter:drop-shadow(0 0 20px white);
+}
+
+.titulo{
+  font-size:42px;
+  color:#ffffff;
+  font-weight:bold;
+  letter-spacing:4px;
+  text-transform:uppercase;
+  text-shadow:0 0 15px rgba(255,255,255,0.5);
+}
+
+.sub{
+  margin-top:10px;
+  color:#aaa;
+  letter-spacing:2px;
+}
+
+.abas{
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  margin-bottom:35px;
+}
+
+.aba-btn{
+  background:#1a1a1a;
+  color:white;
+  border:1px solid rgba(255,255,255,0.3);
+  padding:15px 35px;
+  border-radius:12px;
+  cursor:pointer;
+  font-size:16px;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+.aba-btn:hover{
+  background:#2a2a2a;
+}
+
+.aba-btn.ativa{
+  background:#ffffff;
+  color:black;
+  box-shadow:0 0 15px rgba(255,255,255,0.4);
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+  gap:25px;
+}
+
+.card{
+  background:rgba(20,20,20,0.95);
+  border:1px solid rgba(255,255,255,0.20);
+  border-radius:20px;
+  overflow:hidden;
+  transition:0.3s;
+  box-shadow:0 0 20px rgba(0,0,0,0.5);
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  box-shadow:0 0 25px rgba(255,255,255,0.25);
+}
+
+.card img{
+  width:100%;
+  height:220px;
+  object-fit:contain;
+  background:#0d0d0e;
+  padding:20px;
+}
+
+.conteudo{
+  padding:20px;
+}
+
+.nome{
+  font-size:24px;
+  margin-bottom:15px;
+  color:#ffffff;
+  font-weight:bold;
+}
+
+.info{
+  margin-bottom:10px;
+  color:#ccc;
+}
+
+.info span{
+  color:white;
+  font-weight:bold;
+}
+
+input{
+  width:100%;
+  margin-top:15px;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:#2b2b2b;
+  color:white;
+  font-size:16px;
+  outline:none;
+}
+
+.desconto-box{
+  margin-top:40px;
+  background:rgba(20,20,20,0.95);
+  border:1px solid rgba(255,255,255,0.20);
+  border-radius:20px;
+  padding:25px;
+}
+
+.desconto-box h2{
+  color:#ffffff;
+  margin-bottom:20px;
+}
+
+select{
+  width:200px;
+  padding:12px;
+  border:none;
+  border-radius:10px;
+  background:#2b2b2b;
+  color:white;
+  font-size:16px;
+}
+
+.resultado{
+  margin-top:40px;
+  background:rgba(10,10,10,0.95);
+  border:2px solid rgba(255,255,255,0.25);
+  border-radius:20px;
+  padding:30px;
+  box-shadow:0 0 25px rgba(255,255,255,0.10);
+}
+
+.resultado h2{
+  color:#ffffff;
+  margin-bottom:25px;
+  font-size:32px;
+}
+
+.resultado-item{
+  margin-bottom:15px;
+  font-size:22px;
+  color:#ccc;
+}
+
+.resultado-item span{
+  color:white;
+  font-weight:bold;
+}
+
+.rodape{
+  margin-top:50px;
+  text-align:center;
+  color:#666;
+  letter-spacing:2px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <div class="topo">
+    <img src="logo.png" class="logo">
+
+    <div class="titulo">
+      Best Buds
+    </div>
+
+    <div class="sub">
+      SISTEMA DE CRAFTING & VENDA
+    </div>
+  </div>
+
+  <div class="abas">
+    <button class="aba-btn ativa" onclick="trocarAba('ervas')">
+      Ervas
+    </button>
+
+  </div>
+
+  <!-- Ervas -->
+
+  <div id="ervas" class="aba-conteudo">
+
+    <div class="cards">
+
+      <div class="card">
+        <img src="skunk.png">
+
+        <div class="conteudo">
+          <div class="nome">Skunk</div>
+
+          <div class="info">Pacote cannabis: <span>1</span></div>
+          <div class="info">Papel de seda: <span>15</span></div>
+          <div class="info">Venda: <span>$120</span></div>
+
+          <input type="number" id="qtd9mm" placeholder="Quantidade" oninput="calcular()">
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="purple.png">
+
+        <div class="conteudo">
+          <div class="nome">Purple Haze</div>
+
+          <div class="info">Pacote cannabis: <span>1</span></div>
+          <div class="info">Papel de seda: <span>15</span></div>
+          <div class="info">Venda: <span>$150</span></div>
+
+          <input type="number" id="qtd556" placeholder="Quantidade" oninput="calcular()">
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="blue.png">
+
+        <div class="conteudo">
+          <div class="nome">Blue Dream</div>
+
+          <div class="info">Pacote cannabis: <span>1</span></div>
+          <div class="info">Papel de seda: <span>15</span></div>
+          <div class="info">Venda: <span>$100</span></div>
+
+          <input type="number" id="qtd45" placeholder="Quantidade" oninput="calcular()">
+        </div>
+      </div>
+
+      <div class="card">
+        <img src="cbd.png">
+
+        <div class="conteudo">
+          <div class="nome">CBD</div>
+
+          <div class="info">Venda: <span>$100</span></div>
+
+          <input type="number" id="qtd50" placeholder="Quantidade" oninput="calcular()">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="desconto-box">
+
+    <h2>Desconto da Venda</h2>
+
+    <select id="desconto" onchange="calcular()">
+      <option value="0">Sem desconto</option>
+      <option value="5">5%</option>
+      <option value="10">10%</option>
+      <option value="15">15%</option>
+      <option value="20">20%</option>
+    </select>
+
+  </div>
+
+  <div class="resultado">
+
+    <h2>Resultado da Operação</h2>
+
+    <div class="resultado-item">
+      Pacote cannabis:
+      <span id="totalcannabis">0</span>
+    </div>
+
+    <div class="resultado-item">
+      Papel de seda:
+      <span id="totalseda">0</span>
+    </div>
+
+    <div class="resultado-item">
+      Valor Bruto:
+      <span id="valorBruto">$0</span>
+    </div>
+
+    <div class="resultado-item">
+      Desconto:
+      <span id="valorDesconto">$0</span>
+    </div>
+
+    <div class="resultado-item">
+      Valor Final:
+      <span id="valorFinal">$0</span>
+    </div>
+
+    <div class="resultado-item">
+      Valor Caixa:
+      <span id="valorCaixa">$0</span>
+    </div>
+
+    <div class="resultado-item">
+      Valor Funcionário:
+      <span id="valorFuncionario">$0</span>
+    </div>
+
+  </div>
+
+  <div class="rodape">
+    by: addy
+  </div>
+
+</div>
+
+<script>
+
+function trocarAba(aba){
+  // caso você adicione mais abas no futuro, essa função já fica pronta
+  document.querySelectorAll('.aba-conteudo').forEach(el => el.style.display = 'none');
+  document.getElementById(aba).style.display = 'block';
+
+  document.querySelectorAll('.aba-btn').forEach(btn => btn.classList.remove('ativa'));
+  event.target.classList.add('ativa');
+}
+
+function calcular(){
+
+  const qtd9mm = parseInt(document.getElementById('qtd9mm').value) || 0;
+  const qtd556 = parseInt(document.getElementById('qtd556').value) || 0;
+  const qtd45  = parseInt(document.getElementById('qtd45').value) || 0;
+  const qtd50  = parseInt(document.getElementById('qtd50').value) || 0;
+
+  const desconto = parseInt(document.getElementById('desconto').value) || 0;
+
+  const totalcannabis =
+    (qtd9mm * 1) +
+    (qtd556 * 1) +
+    (qtd45 * 1) +
+    (qtd50 * 0); // CBD não usa pacote de cannabis, ajuste se precisar
+
+  const totalseda =
+    (qtd9mm * 15) +
+    (qtd556 * 15) +
+    (qtd45 * 15) +
+    (qtd50 * 0); // CBD não usa papel de seda, ajuste se precisar
+
+  const valorBruto =
+    (qtd9mm * 120) +
+    (qtd556 * 150) +
+    (qtd45 * 100) +
+    (qtd50 * 100);
+
+  const valorDesconto = valorBruto * (desconto / 100);
+
+  const valorFinal = valorBruto - valorDesconto;
+
+  const valorCaixa = valorFinal / 2;
+  const valorFuncionario = valorFinal / 2;
+
+  document.getElementById('totalcannabis').innerText = totalcannabis;
+
+  document.getElementById('totalseda').innerText = totalseda;
+
+  document.getElementById('valorBruto').innerText =
+    '$' + valorBruto.toLocaleString('pt-BR');
+
+  document.getElementById('valorDesconto').innerText =
+    '$' + valorDesconto.toLocaleString('pt-BR');
+
+  document.getElementById('valorFinal').innerText =
+    '$' + valorFinal.toLocaleString('pt-BR');
+
+  document.getElementById('valorCaixa').innerText =
+    '$' + valorCaixa.toLocaleString('pt-BR');
+
+  document.getElementById('valorFuncionario').innerText =
+    '$' + valorFuncionario.toLocaleString('pt-BR');
+}
+
+</script>
+
+</body>
+</html>
