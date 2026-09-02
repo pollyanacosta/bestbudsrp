@@ -763,31 +763,60 @@ function calcular(){
     ) || 0;
 
 
-  const valorBruto =
+  /*
+    O CBD não entra na divisão 50/50.
+    O valor bruto é separado em:
+    - divisível (Skunk, Purple, Blue) -> metade caixa, metade funcionário
+    - CBD -> 100% funcionário, $0 para o caixa
+  */
+
+  const valorBrutoDivisivel =
 
     (qtdSkunk * 120) +
 
     (qtdPurple * 150) +
 
-    (qtdBlue * 200) +
+    (qtdBlue * 200);
 
-    (qtdCBD * 100);
+
+  const valorBrutoCBD =
+    qtdCBD * 100;
+
+
+  const valorBruto =
+    valorBrutoDivisivel + valorBrutoCBD;
 
 
   const valorDesconto =
     valorBruto * (desconto / 100);
 
 
+  const valorDescontoDivisivel =
+    valorBrutoDivisivel * (desconto / 100);
+
+
+  const valorDescontoCBD =
+    valorBrutoCBD * (desconto / 100);
+
+
+  const valorFinalDivisivel =
+    valorBrutoDivisivel - valorDescontoDivisivel;
+
+
+  const valorFinalCBD =
+    valorBrutoCBD - valorDescontoCBD;
+
+
   const valorFinal =
-    valorBruto - valorDesconto;
+    valorFinalDivisivel + valorFinalCBD;
 
 
   const valorCaixa =
-    valorFinal / 2;
+    valorFinalDivisivel / 2;
 
 
   const valorFuncionario =
-    valorFinal / 2;
+    (valorFinalDivisivel / 2) + valorFinalCBD;
 
 
   document.getElementById('resFuncionario').innerText =
@@ -963,33 +992,55 @@ async function finalizarVenda(){
   }
 
 
-  /* VALORES */
+  /* VALORES (mesma lógica do CBD sem divisão) */
 
-  const valorBruto =
+  const valorBrutoDivisivel =
 
     (qtdSkunk * 120) +
 
     (qtdPurple * 150) +
 
-    (qtdBlue * 200) +
+    (qtdBlue * 200);
 
-    (qtdCBD * 100);
+
+  const valorBrutoCBD =
+    qtdCBD * 100;
+
+
+  const valorBruto =
+    valorBrutoDivisivel + valorBrutoCBD;
 
 
   const valorDesconto =
     valorBruto * (desconto / 100);
 
 
+  const valorDescontoDivisivel =
+    valorBrutoDivisivel * (desconto / 100);
+
+
+  const valorDescontoCBD =
+    valorBrutoCBD * (desconto / 100);
+
+
+  const valorFinalDivisivel =
+    valorBrutoDivisivel - valorDescontoDivisivel;
+
+
+  const valorFinalCBD =
+    valorBrutoCBD - valorDescontoCBD;
+
+
   const valorFinal =
-    valorBruto - valorDesconto;
+    valorFinalDivisivel + valorFinalCBD;
 
 
   const valorCaixa =
-    valorFinal / 2;
+    valorFinalDivisivel / 2;
 
 
   const valorFuncionario =
-    valorFinal / 2;
+    (valorFinalDivisivel / 2) + valorFinalCBD;
 
 
   /* BOTÃO */
