@@ -359,18 +359,6 @@ function calcular(){
 
   const desconto = parseInt(document.getElementById('desconto').value) || 0;
 
-  const totalcannabis =
-    (qtd9mm * 1) +
-    (qtd556 * 1) +
-    (qtd45 * 1) +
-    (qtd50 * 0); // CBD não usa pacote de cannabis, ajuste se precisar
-
-  const totalseda =
-    (qtd9mm * 15) +
-    (qtd556 * 15) +
-    (qtd45 * 15) +
-    (qtd50 * 0); // CBD não usa papel de seda, ajuste se precisar
-
   const valorBruto =
     (qtd9mm * 120) +
     (qtd556 * 150) +
@@ -383,10 +371,6 @@ function calcular(){
 
   const valorCaixa = valorFinal / 2;
   const valorFuncionario = valorFinal / 2;
-
-  document.getElementById('totalcannabis').innerText = totalcannabis;
-
-  document.getElementById('totalseda').innerText = totalseda;
 
   document.getElementById('valorBruto').innerText =
     '$' + valorBruto.toLocaleString('pt-BR');
