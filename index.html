@@ -1,5 +1,7 @@
+```html
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -22,6 +24,8 @@ body{
 
   background-size:cover;
   background-position:center;
+  background-attachment:fixed;
+
   min-height:100vh;
   color:white;
   padding:40px;
@@ -31,6 +35,8 @@ body{
   max-width:1400px;
   margin:auto;
 }
+
+/* TOPO */
 
 .topo{
   text-align:center;
@@ -57,6 +63,8 @@ body{
   color:#aaa;
   letter-spacing:2px;
 }
+
+/* ABAS */
 
 .abas{
   display:flex;
@@ -86,6 +94,8 @@ body{
   color:black;
   box-shadow:0 0 15px rgba(255,255,255,0.4);
 }
+
+/* CARDS */
 
 .cards{
   display:grid;
@@ -148,6 +158,12 @@ input{
   outline:none;
 }
 
+input:focus{
+  box-shadow:0 0 0 2px rgba(255,255,255,0.3);
+}
+
+/* DESCONTO */
+
 .desconto-box{
   margin-top:40px;
   background:rgba(20,20,20,0.95);
@@ -169,7 +185,10 @@ select{
   background:#2b2b2b;
   color:white;
   font-size:16px;
+  outline:none;
 }
+
+/* RESULTADO */
 
 .resultado{
   margin-top:40px;
@@ -197,6 +216,44 @@ select{
   font-weight:bold;
 }
 
+/* BOTÃO FINALIZAR */
+
+.finalizar-btn{
+  width:100%;
+  margin-top:25px;
+  padding:20px;
+
+  border:1px solid rgba(255,255,255,0.4);
+  border-radius:14px;
+
+  background:#ffffff;
+  color:#000000;
+
+  font-size:20px;
+  font-weight:bold;
+
+  cursor:pointer;
+
+  transition:0.3s;
+}
+
+.finalizar-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 0 25px rgba(255,255,255,0.4);
+}
+
+.finalizar-btn:active{
+  transform:scale(0.98);
+}
+
+.finalizar-btn:disabled{
+  opacity:0.5;
+  cursor:not-allowed;
+  transform:none;
+}
+
+/* RODAPÉ */
+
 .rodape{
   margin-top:50px;
   text-align:center;
@@ -204,14 +261,44 @@ select{
   letter-spacing:2px;
 }
 
+/* RESPONSIVO */
+
+@media(max-width:600px){
+
+  body{
+    padding:20px;
+  }
+
+  .titulo{
+    font-size:30px;
+  }
+
+  .logo{
+    width:140px;
+  }
+
+  .resultado h2{
+    font-size:26px;
+  }
+
+  .resultado-item{
+    font-size:18px;
+  }
+
+}
+
 </style>
+
 </head>
 
 <body>
 
 <div class="container">
 
+  <!-- TOPO -->
+
   <div class="topo">
+
     <img src="logo.png" class="logo">
 
     <div class="titulo">
@@ -221,177 +308,683 @@ select{
     <div class="sub">
       SISTEMA DE CRAFTING & VENDA
     </div>
+
   </div>
 
+
+  <!-- ABAS -->
+
   <div class="abas">
-    <button class="aba-btn ativa" onclick="trocarAba('ervas')">
+
+    <button
+      class="aba-btn ativa"
+      onclick="trocarAba('ervas', this)"
+    >
       Ervas
     </button>
 
   </div>
 
-  <!-- Ervas -->
+
+  <!-- ERVAS -->
 
   <div id="ervas" class="aba-conteudo">
 
     <div class="cards">
 
+
+      <!-- SKUNK -->
+
       <div class="card">
+
         <img src="skunk.png">
 
         <div class="conteudo">
-          <div class="nome">Skunk</div>
 
-          <div class="info">Venda: <span>$120</span></div>
+          <div class="nome">
+            Skunk
+          </div>
 
-          <input type="number" id="qtd9mm" placeholder="Quantidade" oninput="calcular()">
+          <div class="info">
+            Venda:
+            <span>$120</span>
+          </div>
+
+          <input
+            type="number"
+            id="qtdSkunk"
+            placeholder="Quantidade"
+            min="0"
+            oninput="calcular()"
+          >
+
         </div>
+
       </div>
 
+
+      <!-- PURPLE HAZE -->
+
       <div class="card">
+
         <img src="purple.png">
 
         <div class="conteudo">
-          <div class="nome">Purple Haze</div>
 
-          <div class="info">Venda: <span>$150</span></div>
+          <div class="nome">
+            Purple Haze
+          </div>
 
-          <input type="number" id="qtd556" placeholder="Quantidade" oninput="calcular()">
+          <div class="info">
+            Venda:
+            <span>$150</span>
+          </div>
+
+          <input
+            type="number"
+            id="qtdPurple"
+            placeholder="Quantidade"
+            min="0"
+            oninput="calcular()"
+          >
+
         </div>
+
       </div>
 
+
+      <!-- BLUE DREAM -->
+
       <div class="card">
+
         <img src="blue.png">
 
         <div class="conteudo">
-          <div class="nome">Blue Dream</div>
 
-          <div class="info">Venda: <span>$100</span></div>
+          <div class="nome">
+            Blue Dream
+          </div>
 
-          <input type="number" id="qtd45" placeholder="Quantidade" oninput="calcular()">
+          <div class="info">
+            Venda:
+            <span>$100</span>
+          </div>
+
+          <input
+            type="number"
+            id="qtdBlue"
+            placeholder="Quantidade"
+            min="0"
+            oninput="calcular()"
+          >
+
         </div>
+
       </div>
 
+
+      <!-- CBD -->
+
       <div class="card">
+
         <img src="cbd.png">
 
         <div class="conteudo">
-          <div class="nome">CBD</div>
 
-          <div class="info">Venda: <span>$100</span></div>
+          <div class="nome">
+            CBD
+          </div>
 
-          <input type="number" id="qtd50" placeholder="Quantidade" oninput="calcular()">
+          <div class="info">
+            Venda:
+            <span>$100</span>
+          </div>
+
+          <input
+            type="number"
+            id="qtdCBD"
+            placeholder="Quantidade"
+            min="0"
+            oninput="calcular()"
+          >
+
         </div>
+
       </div>
+
 
     </div>
 
   </div>
 
+
+  <!-- DESCONTO -->
+
   <div class="desconto-box">
 
-    <h2>Desconto da Venda</h2>
+    <h2>
+      Desconto da Venda
+    </h2>
 
-    <select id="desconto" onchange="calcular()">
-      <option value="0">Sem desconto</option>
-      <option value="5">5%</option>
-      <option value="10">10%</option>
-      <option value="15">15%</option>
-      <option value="20">20%</option>
+    <select
+      id="desconto"
+      onchange="calcular()"
+    >
+
+      <option value="0">
+        Sem desconto
+      </option>
+
+      <option value="5">
+        5%
+      </option>
+
+      <option value="10">
+        10%
+      </option>
+
+      <option value="15">
+        15%
+      </option>
+
+      <option value="20">
+        20%
+      </option>
+
     </select>
 
   </div>
 
+
+  <!-- RESULTADO -->
+
   <div class="resultado">
 
-    <h2>Resultado da Operação</h2>
+    <h2>
+      Resultado da Operação
+    </h2>
 
     <div class="resultado-item">
+
       Valor Bruto:
-      <span id="valorBruto">$0</span>
+
+      <span id="valorBruto">
+        $0
+      </span>
+
     </div>
 
+
     <div class="resultado-item">
+
       Desconto:
-      <span id="valorDesconto">$0</span>
+
+      <span id="valorDesconto">
+        $0
+      </span>
+
     </div>
 
+
     <div class="resultado-item">
+
       Valor Final:
-      <span id="valorFinal">$0</span>
+
+      <span id="valorFinal">
+        $0
+      </span>
+
     </div>
 
+
     <div class="resultado-item">
+
       Valor Caixa:
-      <span id="valorCaixa">$0</span>
+
+      <span id="valorCaixa">
+        $0
+      </span>
+
     </div>
 
+
     <div class="resultado-item">
+
       Valor Funcionário:
-      <span id="valorFuncionario">$0</span>
+
+      <span id="valorFuncionario">
+        $0
+      </span>
+
     </div>
-    
-<button class="finalizar-btn" onclick="finalizarVenda()">
-  🛒 FINALIZAR VENDA
-</button>
+
+
   </div>
+
+
+  <!-- FINALIZAR VENDA -->
+
+  <button
+    class="finalizar-btn"
+    onclick="finalizarVenda()"
+  >
+
+    🛒 FINALIZAR VENDA
+
+  </button>
+
+
+  <!-- RODAPÉ -->
 
   <div class="rodape">
+
     by: addy
+
   </div>
+
 
 </div>
 
+
 <script>
 
-function trocarAba(aba){
-  // caso você adicione mais abas no futuro, essa função já fica pronta
-  document.querySelectorAll('.aba-conteudo').forEach(el => el.style.display = 'none');
-  document.getElementById(aba).style.display = 'block';
+/* ============================
+   TROCAR ABA
+============================ */
 
-  document.querySelectorAll('.aba-btn').forEach(btn => btn.classList.remove('ativa'));
-  event.target.classList.add('ativa');
+function trocarAba(aba, botao){
+
+  document
+    .querySelectorAll('.aba-conteudo')
+    .forEach(el => {
+
+      el.style.display = 'none';
+
+    });
+
+  document
+    .getElementById(aba)
+    .style.display = 'block';
+
+
+  document
+    .querySelectorAll('.aba-btn')
+    .forEach(btn => {
+
+      btn.classList.remove('ativa');
+
+    });
+
+
+  botao.classList.add('ativa');
+
 }
+
+
+/* ============================
+   CALCULAR VENDA
+============================ */
 
 function calcular(){
 
-  const qtd9mm = parseInt(document.getElementById('qtd9mm').value) || 0;
-  const qtd556 = parseInt(document.getElementById('qtd556').value) || 0;
-  const qtd45  = parseInt(document.getElementById('qtd45').value) || 0;
-  const qtd50  = parseInt(document.getElementById('qtd50').value) || 0;
+  const qtdSkunk =
+    parseInt(
+      document.getElementById('qtdSkunk').value
+    ) || 0;
 
-  const desconto = parseInt(document.getElementById('desconto').value) || 0;
+
+  const qtdPurple =
+    parseInt(
+      document.getElementById('qtdPurple').value
+    ) || 0;
+
+
+  const qtdBlue =
+    parseInt(
+      document.getElementById('qtdBlue').value
+    ) || 0;
+
+
+  const qtdCBD =
+    parseInt(
+      document.getElementById('qtdCBD').value
+    ) || 0;
+
+
+  const desconto =
+    parseInt(
+      document.getElementById('desconto').value
+    ) || 0;
+
 
   const valorBruto =
-    (qtd9mm * 120) +
-    (qtd556 * 150) +
-    (qtd45 * 100) +
-    (qtd50 * 100);
 
-  const valorDesconto = valorBruto * (desconto / 100);
+    (qtdSkunk * 120) +
 
-  const valorFinal = valorBruto - valorDesconto;
+    (qtdPurple * 150) +
 
-  const valorCaixa = valorFinal / 2;
-  const valorFuncionario = valorFinal / 2;
+    (qtdBlue * 100) +
+
+    (qtdCBD * 100);
+
+
+  const valorDesconto =
+    valorBruto * (desconto / 100);
+
+
+  const valorFinal =
+    valorBruto - valorDesconto;
+
+
+  const valorCaixa =
+    valorFinal / 2;
+
+
+  const valorFuncionario =
+    valorFinal / 2;
+
 
   document.getElementById('valorBruto').innerText =
     '$' + valorBruto.toLocaleString('pt-BR');
 
+
   document.getElementById('valorDesconto').innerText =
     '$' + valorDesconto.toLocaleString('pt-BR');
+
 
   document.getElementById('valorFinal').innerText =
     '$' + valorFinal.toLocaleString('pt-BR');
 
+
   document.getElementById('valorCaixa').innerText =
     '$' + valorCaixa.toLocaleString('pt-BR');
 
+
   document.getElementById('valorFuncionario').innerText =
     '$' + valorFuncionario.toLocaleString('pt-BR');
+
 }
+
+
+/* ============================
+   FINALIZAR VENDA
+============================ */
+
+async function finalizarVenda(){
+
+  const qtdSkunk =
+    parseInt(
+      document.getElementById('qtdSkunk').value
+    ) || 0;
+
+
+  const qtdPurple =
+    parseInt(
+      document.getElementById('qtdPurple').value
+    ) || 0;
+
+
+  const qtdBlue =
+    parseInt(
+      document.getElementById('qtdBlue').value
+    ) || 0;
+
+
+  const qtdCBD =
+    parseInt(
+      document.getElementById('qtdCBD').value
+    ) || 0;
+
+
+  const desconto =
+    parseInt(
+      document.getElementById('desconto').value
+    ) || 0;
+
+
+  /* PRODUTOS */
+
+  const produtos = [];
+
+
+  if(qtdSkunk > 0){
+
+    produtos.push({
+
+      nome: 'Skunk',
+
+      quantidade: qtdSkunk,
+
+      preco: 120,
+
+      subtotal: qtdSkunk * 120
+
+    });
+
+  }
+
+
+  if(qtdPurple > 0){
+
+    produtos.push({
+
+      nome: 'Purple Haze',
+
+      quantidade: qtdPurple,
+
+      preco: 150,
+
+      subtotal: qtdPurple * 150
+
+    });
+
+  }
+
+
+  if(qtdBlue > 0){
+
+    produtos.push({
+
+      nome: 'Blue Dream',
+
+      quantidade: qtdBlue,
+
+      preco: 100,
+
+      subtotal: qtdBlue * 100
+
+    });
+
+  }
+
+
+  if(qtdCBD > 0){
+
+    produtos.push({
+
+      nome: 'CBD',
+
+      quantidade: qtdCBD,
+
+      preco: 100,
+
+      subtotal: qtdCBD * 100
+
+    });
+
+  }
+
+
+  /* VERIFICAR PRODUTOS */
+
+  if(produtos.length === 0){
+
+    alert(
+      '⚠️ Adicione pelo menos um produto antes de finalizar a venda.'
+    );
+
+    return;
+
+  }
+
+
+  /* VALORES */
+
+  const valorBruto =
+
+    (qtdSkunk * 120) +
+
+    (qtdPurple * 150) +
+
+    (qtdBlue * 100) +
+
+    (qtdCBD * 100);
+
+
+  const valorDesconto =
+    valorBruto * (desconto / 100);
+
+
+  const valorFinal =
+    valorBruto - valorDesconto;
+
+
+  const valorCaixa =
+    valorFinal / 2;
+
+
+  const valorFuncionario =
+    valorFinal / 2;
+
+
+  /* BOTÃO */
+
+  const botao =
+    document.querySelector('.finalizar-btn');
+
+
+  botao.disabled = true;
+
+  botao.innerText =
+    '⏳ ENVIANDO VENDA...';
+
+
+  try{
+
+    const resposta =
+      await fetch('/api/venda', {
+
+        method: 'POST',
+
+        headers: {
+
+          'Content-Type':
+            'application/json'
+
+        },
+
+        body: JSON.stringify({
+
+          produtos: produtos,
+
+          valorBruto: valorBruto,
+
+          desconto: desconto,
+
+          valorDesconto: valorDesconto,
+
+          valorFinal: valorFinal,
+
+          valorCaixa: valorCaixa,
+
+          valorFuncionario: valorFuncionario
+
+        })
+
+      });
+
+
+    const resultado =
+      await resposta.json();
+
+
+    if(!resposta.ok){
+
+      throw new Error(
+        resultado.erro ||
+        'Erro ao enviar a venda.'
+      );
+
+    }
+
+
+    /* SUCESSO */
+
+    alert(
+      '✅ Venda registrada com sucesso!'
+    );
+
+
+    botao.innerText =
+      '✅ VENDA FINALIZADA';
+
+
+    /*
+      Limpa os campos depois da venda
+    */
+
+    document.getElementById('qtdSkunk').value = '';
+
+    document.getElementById('qtdPurple').value = '';
+
+    document.getElementById('qtdBlue').value = '';
+
+    document.getElementById('qtdCBD').value = '';
+
+    document.getElementById('desconto').value = '0';
+
+
+    calcular();
+
+
+    setTimeout(() => {
+
+      botao.disabled = false;
+
+      botao.innerText =
+        '🛒 FINALIZAR VENDA';
+
+    }, 2000);
+
+
+  }catch(erro){
+
+    console.error(erro);
+
+
+    alert(
+      '❌ Não foi possível registrar a venda.\n\n' +
+      erro.message
+    );
+
+
+    botao.disabled = false;
+
+    botao.innerText =
+      '🛒 FINALIZAR VENDA';
+
+  }
+
+}
+
+
+/* CALCULAR AO ABRIR */
+
+calcular();
 
 </script>
 
 </body>
+
 </html>
+```
